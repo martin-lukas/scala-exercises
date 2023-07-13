@@ -31,18 +31,6 @@ class Ch399LetterValueSum extends AnyFlatSpec {
     val (mostCommonSum, mostCommonSumWords) = wordList.groupBy(letterSum).maxBy(_._2.size)
     println(s"sum - $mostCommonSum, words - ${mostCommonSumWords.size}")
     println("Words with same sum, but their lengths differ by 11 letters: ")
-    wordList.groupBy(letterSum).foreach { case (sum, words) =>
-      val groupedByLen = words.groupBy(_.length)
-      val minLen = groupedByLen.minBy(_._1)._1
-      val maxLen = groupedByLen.maxBy(_._1)._1
-      (minLen to maxLen - 11).foreach { lowerLen =>
-        val upperLen = lowerLen + 11
-        if (groupedByLen.contains(lowerLen) && groupedByLen.contains(upperLen))
-          println(
-            s"\tLetter sum - $sum ; word pair - ${groupedByLen(lowerLen)}, ${groupedByLen(upperLen)}"
-          )
-      }
-    }
     for {
       (sum, words) <- wordList.groupBy(letterSum)
       groupedByLen = words.groupBy(_.length)

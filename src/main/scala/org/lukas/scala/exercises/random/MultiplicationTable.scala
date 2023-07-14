@@ -24,12 +24,12 @@ class MultiplicationTable extends AnyFlatSpec {
 
   def makeRow(row: Seq[Int], maxNumber: Int): String =
     val maxLength = maxNumber.toString.length
-    return maxLength.toString
+    maxLength.toString
 
   def padNum(num: Int, minLength: Int): String = "sdfds"
 
   "multiTable" should "return multiplication table" in {
     val table = multiTable(10)
-    println(table)
+//    println(table)
   }
 }
